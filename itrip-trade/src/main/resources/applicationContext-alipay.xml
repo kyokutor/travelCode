@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- 支付宝手机网站支付 -->
+	<bean class="cn.itrip.trade.config.AlipayConfig">
+		<!-- 2016101600696145   ta 2016101700704689-->
+		<property name="appID" value="2016101700704689"/>
+
+<!--
+		<property name="rsaPrivateKey" value="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCTctoJqW7pjP7E+egQAeGK/pjjrKDKdzF/dWlnT+DPKpOnohJoICf0LvMwi0hsbVtM05IEJS9QNCyHhGNssVMF9D3M5ixA2lUrviwmf3CLG8XqFOP/ioa771TrIHCZ4nRdsGDyPbHZfDJSk/NkiaXIY6bkJporC52cA/rKQ566aXGoHPgbgySTalqOv2l8/EPWWa7TTJ2JoP0/EYj+Lk4NPoX+dAvSGpyZEXws3cmp7cvwnWchWUVB+dpjPCGVrlKY4t+iwZkTS8DKoaCdjwYBZS0hwOcmaLMgJ8xsgK8zygw04eRLlp3ivuL4Z/LXdADX0TEHnN/mKvEGpZ5w1hnNAgMBAAECggEALr7FozSFBiP+DSKRUKnYAEHQ5LUw0J9TIO5vOSKYyfTclNOL9FjlccOEs8okbsOIo2WbsBa91jaEO35cKvRYttWE1jXOp8zQHasPwjC61E88woZW9gfLyT8J8/T33cFuVNl7ErE+dg2qwoVHL4N3/HyjR0d5rtXi5LhaRM+FPeF+xoogBv5hFLlOZVMT5S8GvHX28od6JFWJto13yliFW9xkAWAhlhwxbrm9bnD1IHBsVcXtCTAtzBC2fRWMj14MWuY8DdGg3Fq8MUbLaB6UCZ73vXC89Jv2qwx9jhpNGeLbpEzPRcQe/cA/gAPiVJhn7Pg+fljlN10DldMlymBIXQKBgQDDvb7LPLeZ0beImJMAY6tZSI11y4FpdkcC0NUu6BIyth5R0zG7XWT5Ker9V7tYPtGrFr9kPVue+jwbS1fuWqB24z7UOYApsWUepreX36yW0zT25Lx2N3MueQmOtQ0gyn1T7whjAtMItz0QjLe/H9SeSrVShVCs0l6kQwAht9ODewKBgQDA1zJ27qjxXgbQJ6mRWXMSaEh0Hg2bZ4wG37/zn+UumAZ3WQGj4WxYM4NY0a4GNKriyUE/4TQcJJgyUyTnW2cEyhln23pmhgtYGfJH8FcqHfLiXLOurwAGW/GePy9OVpJgxviyDqbdXLQEEoOhrdrj+D2ZZ1vER+btRqmLr8fRVwKBgAgNXjPuI39oaSxtWl7BuuLJYUhfPsuf2fv7q0lqspTzePvUvE8A4I5/cvNJEKPosadgIC93drVrhd15k/xyLfe2EXeZhfQxH//Ky/KreOYbeipN7pLOZSacRBBi0k9vBQjW5HluPFA3eYOcxlJOdOiuGhdy9IangM0xFGhOr5zRAoGAZ587bs0v2wM7hf7KD2CRhQKkbED57tflVoxFCRSSgkcOsnMRfo5TOdH0cnW5nXwPl22tsjXBWp4PantjCS8EXH58yGIXk5/T2LOYjS+IpwkQyrIlm2hOCxy86Nvq/51laruAR6233JtD4CxSrz5MsNNjxlrT5NT+MeIWmQkLxmECgYEAkN/2l37It1NnChjbIkbmLBDrBCOm7QEqoMW8vpnVa9WHAGqEy/ODr2KEGyY8zcEmFnRxp7qA8MEpeOJ1uHuhFpANB47b5wO2OzZk3o2LgXgknxMObMje7W4btd8KEICq+KQ7tXjVZXzKyPvp5GbzK3PLVa4QtK1+PvuAK6Dr7xw="/>
+-->
+		<property name="rsaPrivateKey" value="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCGHnA4F5sfq4Gi/finHIiwCXbndsGhcsOCrwjGVsaVrAe2hdl83A/heCfgQC3+md5dyfgNm+Uvr2EfpvCzmY+x71/8T0cKoEBSYfneX0u3G35JfjiRIx+E1s2mDivY1Be+d30QZI4eNmghv1FtsyJ0OlvBRpk2Bj0QuGNfiVDS4fLjn98YEo3+Fgbr+WVeNVI/U9SHM/UaWj4AEr7PrVDHmjSmST4305LBdY/jgSrgdW4RLag/Au6OOSr//UqHCPM4qMkp7A2b0/g61J+VagrRubinTOpRuVKUCf1E2E+Pb+44LO8T52jhuPeT4IeptPEhG9kQNvJfcGu6mAHSBqDtAgMBAAECggEAW2z2bJZS7ZTZS0W7shc2amIZRxHiTu9PrY8p+SKAPtlFbLvzlTTiMn3ZGPpHIE69kcuzJ3vFEOuJ1qzTWmrs1IvsL6/PKsQw9LfLQDZQA+NfBDRh1TZPLxvKlk8Evstd4D3N6FXTt265L4Aevxwk+XwqviclG/nGuNYpD6Aok4fr6nw9hOa+c+VbyCnEZfftb1omQ5zKfp1zSwS4XJ8if9NE+LUZXomKoND6KqpITy4dHJFVE3YAwDSNt6tbJpdHazZddKc9Ks3/WEqgmNeJulroCXYvh+jPkX8owzdj0QZYC01+ZC4WUegiJz7tL9Is6wbbXkoAITixmvYFqlPolQKBgQDG7mq6Of4YF6z25n7aMsPX/rmj4Ou+ke0W6F6DUuO8aROpSpKJYyO6LkTC8C/PyiKZnPxEkMQ21b1F/nnG3IFxvp4tGVb2jmTglYoQ/d77CUqLJ0JPBXRyc4RbzvvzkMPAIJ06cQ6FT9pVAeMFPL55CsjiRbmo7l7xY/DQV2cTPwKBgQCsmCz6dPlGKz5YYVxI2Vl4my1qGM6ZSrellHmWKU5SF9aWBEZo5TJCptkEw+/z571fB+q21u3yvzuD7wzkmBHULFiMipZf6aRHqHFrnJc/JmbDcS/x9NE/Th0WCmlaQZQOIW54xhjdVdYzIadM/gXIKTB+gYYRqXMPSZiPb7E80wKBgQCVENDu7UfnG86jUMMblFDGyPyovYFJ0yV7NfKkq3c1lvOBtvypcJ20BLnH7Z2WMhzNSSKL6oLtqCplibQM/O0Oo8z5dHSC2t7in4vPAb2WFTdDoM6CUk8Y+FDlTuvjbsYQcSAAS/makeTEMF7CbOs53of7bk4aNUz1y3MHW4dElwKBgDQAfbzQtbKAoP48B3QjmKOQDbTj2IuzSXXoMGIf++scJ5l3nEdKl0QhxU18Q7X3YsVZO0zvoS38lFACHJ5bezO0UNG3h+tKGCdHBzVnLuLmDRxh5BJAszMhs/3KEUgSbit7wy88cI1vqWQqhZ/bAZ73Whcjq2Ny7Kn0gLTm8D3lAoGBAJ3nQAPyMr2wmRGlSaToL5i7+qMWvG45TV5oGGBFU0C8HtBtbReKsl24obshksMjZLUPxA5y1v5pizyAcxxwPqPgM7fqwLbkEsLg9iG21Qv5KWJMuJCG1yahFBsETp980ZYLhxdqY7hJ99bkIfZQmbtz3okZT0fxZO83L8FqUPpC"></property>
+		<property name="notifyUrl" value="http://ssqq.wezoz.com/trade/api/notify"/>
+		<property name="returnUrl" value="http://ssqq.wezoz.com/trade/api/return"/>
+		<property name="url" value="https://openapi.alipaydev.com/gateway.do"/>
+		<property name="charset" value="UTF-8"/>
+		<property name="format" value="json"/>
+<!--
+		<property name="alipayPublicKey" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhj0Xb9ssnbLkpRwb0ri3X3c6iwTimcMmpdGYkf6cwx1cUQrmSvQtSpl/lh+UBGtfA4Tw1lthlvGyBwdoGwEXC+6kAnhQy0RbWaftKVZFB5o60UqLWZW/Rn+KT2AQNh5Pbt4KRMzq+EX5mtlH4DwEj+v8cOyAMLlvWJSWtvXw4G4wshMAB7nrjXxINXPekMDpSttr4whI1RWAabK0o3YppgyW/WA21TbHRjTgxjGvzBuLNpu/KMlfxG1uQmJYtOeigOxts5uf5BDsQffToGCR7kNrb0uwMuLbg1kGpdXpXtuPkBUTogLAqN+jZgjrjoXazM1LQF7sodlwdnB/5f3RSQIDAQAB"/>
+-->
+		<property name="alipayPublicKey" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlqxiC6xhn/z4YmavZ0buRUOyU8pKP4iTwYE5SEW2RD9p24AVCzvvon+rAgm13BOTKqezqU1FyhbLRloR5mUy8+6aZCGCvnQqNaSBthNIdWtlNIy0wQH5s5YEUe8kxS9sRldfvOgTz3u69yScoGyHe6iBvtnG/NEmF6o5D9kxJJ2cOnAPo3dC+YtGGTvg95ytXBfjTrRRlTvcN7mb34PQQ/zEV54cljsEYjJ+e2uaj5C/+0Nzyaa4LysYbFWJXPkGdWqyGxzWHYDpazpzj2wskFrl2oSvvDeL6TOvaUpKoHqEOLCYjYrOgNmoES2YZRUUjVpj8Po3+cgUKgCmCT8sDwIDAQAB"></property>
+		<property name="logPath" value="/logs"/>
+		<property name="signType" value="RSA2"/>
+		<property name="paymentSuccessUrl" value="http://localhost/index.html#/orderpaystate?orderNo=%s&amp;id=%s"/>
+		<property name="paymentFailureUrl" value="http://localhost/index.html#/orderpaystate?orderNo=%s&amp;id=%s&amp;state=0"/>
+	</bean>
+	
+	
+</beans>

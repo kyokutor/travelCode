@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+
+  <import resource="applicationContext-mail.xml"/>
+
+
+    <context:component-scan base-package="cn.itrip.service"/>
+
+
+     <!--事务管理-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--获取数据扫描数据源-->
+    <context:property-placeholder location="classpath:database.properties"/>
+
+
+
+
+     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+            <property name="driverClassName" value="${driver}"/>
+            <property name="password" value="${password}"></property>
+            <property name="url" value="${url}"></property>
+            <property name="username" value="${user}"/>
+     </bean>
+
+
+     <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+         <property name="dataSource" ref="dataSource"></property>
+         <property name="configLocation" value="classpath:mybatis-config.xml"/>
+     </bean>
+
+
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       <property name="basePackage" value="cn.itrip.dao"/>
+    </bean>
+
+    <!--7.1、初始化jedisPoolConfig对象-->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.maxTotal}"/>
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="maxWaitMillis" value="${redis.maxWait}"/>
+    </bean>
+    <!--7.2、创建JedisPool 连接池对象-->
+    <!--public JedisPool(GenericObjectPoolConfig poolConfig, String host, int port, int timeout, String password) {-->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg ref="jedisPoolConfig"/>
+        <constructor-arg value="${redis.host}"/>
+        <constructor-arg value="${redis.port}"/>
+        <!--timeout=10000 意思是使用Jedis连接Redis，再过了4s后没接连成功就断开连接-->
+        <constructor-arg value="${redis.timeout}"/>
+        <constructor-arg value="${redis.password}"/>
+    </bean>
+    <!--7.3、创建RedisAPI Bean实例对象, 这个RedisAPI在itriputils子模块中。-->
+    <bean id="redisAPI" class="cn.itrip.common.RedisAPI">
+        <!--使用Spring为JedisAPI类中的JedisPool注入依赖对象-->
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+
+
+</beans>
